@@ -1,31 +1,17 @@
 package com.osayistreams.springDemo.student;
 
-import java.time.LocalDate;
 import java.util.List;
 
-import org.springframework.stereotype.Service;
 
+public interface StudentService {
 
-@Service
-public class StudentService {
+    Student save(Student s);
 
-    public List<Student> findAllStudent(){
-        return List.of(
-            new Student(
-                "Osayi",
-                "Akoko",
-                LocalDate.now(),
-                "hello@osayistreams.com",
-                28
-            ),
-            new Student(
-                "Osayi",
-                "Akoko",
-                LocalDate.now(),
-                "hello@osayistreams.com",
-                28
-            )
-        );
-    }
-    
+    List<Student> findAllStudent();
+
+    Student findByEmail(String email);
+
+    Student update(Student s);
+
+    void delete(String email);
 }
