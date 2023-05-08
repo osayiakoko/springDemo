@@ -1,16 +1,33 @@
 package com.osayistreams.springDemo.student;
 
 import java.time.LocalDate;
+import java.time.Period;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
+@Entity
+@Table(name = "students")
 public class Student {
+    
+    @Id
+    @GeneratedValue
+    private Integer id;
+
     private String firstname;
 
     private String lastname;
 
     private LocalDate dateOfBirth;
 
+    @Column(unique = true)
     private String email;
     
+    @Transient
     private int age;
 
 
@@ -23,6 +40,14 @@ public class Student {
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.age = age;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getFirstname() {
@@ -58,12 +83,11 @@ public class Student {
     }
 
     public int getAge() {
-        return age;
+        return Period.between(dateOfBirth, LocalDate.now()).getYears();
     }
 
     public void setAge(int age) {
         this.age = age;
     }
 
-    
 }
