@@ -1,10 +1,13 @@
 package com.osayistreams.springDemo.student;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
 import org.springframework.stereotype.Repository;
+
+import jakarta.annotation.PostConstruct;
 
 
 @Repository
@@ -46,5 +49,18 @@ public class InMemoryStudentDao {
         if (student != null){
             STUDENTS.remove(student);
         }
+    }
+
+    @PostConstruct
+    void populate(){
+        save(
+            new Student(
+                "John",
+                "Doe",
+                LocalDate.now(),
+                "hello@johndoe.com",
+                0
+            )
+        );
     }
 }
