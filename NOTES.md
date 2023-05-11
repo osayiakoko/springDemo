@@ -20,3 +20,11 @@ There two ways to inject a dependecy
 
 It is not compulsory to add the @autowired annotations.
 Spring is smart enough to know a dependency requriement
+
+
+There is a concept in spring boot called Profile, it has an annotation
+It is a way to annotate classes or function to run in certain environments e.g dev, prod...
+Also it can determine which application.properties runs
+
+
+application.properties can be typed
